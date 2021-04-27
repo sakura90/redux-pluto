@@ -11,6 +11,7 @@ import loading, { State as LoadingState } from "./loading";
 import hackerNews, { State as HackerNewsState } from "./hackerNews";
 import uploadSample, { State as UploadSampleState } from "./uploadSample";
 import canvas, { State as CanvasState } from "./canvas";
+import hello, { State as Hello } from "./hello";
 
 export type RootState = {
   app: {
@@ -23,6 +24,7 @@ export type RootState = {
     agreedSample: AgreedSampleState;
     uploadSample: UploadSampleState;
     canvas: CanvasState;
+    hello: Hello;
   };
   // libraries
   form: any;
@@ -41,6 +43,7 @@ export default combineReducers({
     uploadSample,
     hackerNews,
     canvas,
+    hello,
   }),
   form: formReducer,
   reduxAsyncLoader,
