@@ -1,4 +1,5 @@
 import React from "react";
+import { Field } from "redux-form";
 
 export type Props = {
   // props の型定義
@@ -8,7 +9,7 @@ export type Props = {
 };
 
 export default function Hello(props: Props) {
-  const { isVisible, onChangeVisibility, comments } = props;
+  const { isVisible, onChangeVisibility, comments, handleSubmit } = props;
 
   return (
     <div>   
@@ -16,6 +17,12 @@ export default function Hello(props: Props) {
       <button type="button" onClick={() => onChangeVisibility()}>
         {isVisible ? "hide" : "show"}
       </button>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <Field name="text" component="input" type="text" />
+          <button type="submit">submit</button>
+        </div>
+      </form>
     </div>
   );
 }
