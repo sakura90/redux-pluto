@@ -2,6 +2,18 @@ import createUniversalComponent from "./createUniversalComponent";
 
 const chunkName = "misc";
 
+export function loadHello(_: any, cb: any) {
+  createUniversalComponent(
+    () =>
+      import(
+        /* webpackChunkName: "misc" */ "../components/organisms/Hello"
+      ),
+    // @ts-ignore
+    () => require.resolveWeak("../components/organisms/Hello"),
+    chunkName,
+  ).then(result => cb(null, result), cb);
+}
+
 export function loadAgreedSample(_: any, cb: any) {
   createUniversalComponent(
     () =>

@@ -1,10 +1,12 @@
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { asyncLoader } from "@recruit-tech/redux-async-loader"; // redux-asynch-roder から　asyncLoader　をインポート
 import { changeVisibility, getComments } from "../../../redux/modules/hello";
 import { RootState } from "../../../redux/modules/reducer";
 import Hello from "./Hello";
 
-export default compose(
+const enhancer = compose(
+  asyncLoader(({}, { dispatch }) => dispatch(getComments())),
   connect(
     (state: RootState) => ({
       isVisible: state.app.hello.isVisible,
@@ -12,7 +14,8 @@ export default compose(
     }),
     dispatch => ({
       onChangeVisibility: () => dispatch(changeVisibility()),
-      onClickGetComments: () => dispatch(getComments() as any),
     }),
   ),
-)(Hello);
+);
+
+export default enhancer(Hello);

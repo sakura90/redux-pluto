@@ -21,6 +21,7 @@ type HeaderLink = {
 const links: HeaderLink[] = [
   { key: "home", to: "/", label: "Home", index: true },
   { key: "bar", to: "/bar", label: "Bar" },
+  { key: "hello", to: "/hello", label: "Hello" },
   { key: "agreedsample", to: "/agreedsample", label: "AgeedSample" },
   { key: "uploadsample", to: "/uploadsample", label: "UploadSample" },
   { key: "canvas", to: "/canvas", label: "Canvas" },

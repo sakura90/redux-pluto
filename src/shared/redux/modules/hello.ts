@@ -42,12 +42,9 @@ export function changeVisibility() {
   };
 }
 
-export function getCommentsRequest(payload: {
-  resource: string;
-}): CommentsRequest {
+export function getCommentsRequest(): CommentsRequest {
   return {
-    type: HELLO_GET_COMMENTS_REQUEST,
-    payload,
+    type: HELLO_GET_COMMENTS_REQUEST
   };
 }
  
@@ -67,8 +64,10 @@ export function getCommentsFail() {
  
 export function getComments() {
   return steps(
-    getCommentsRequest({ resource: "hello" }),
-    ({ payload }) => fetchrRead(payload),
+    getCommentsRequest(),
+    fetchrRead({
+      resource: "hello",
+    }) as any,
     [getCommentsSuccess, getCommentsFail],
   );
 }

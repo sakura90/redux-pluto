@@ -17,6 +17,7 @@ import {
 
 // chunked components
 import {
+  loadHello,
   loadAgreedSample,
   loadBar,
   loadLogin,
@@ -35,7 +36,12 @@ export default function getRoutes(store: any) {
         <Route components={{ header: Header, main: Main, footer: Footer }}>
           <$IndexRoute component={Home} title="Home" />
           <$Route path="bar" getComponent={loadBar} title="Bar" />
-          <Route path="hello" component={Hello} />
+
+          <$Route
+            path="hello"
+            getComponent={loadHello}
+            title="Hello"
+          />
 
           <$Route
             path="agreedsample"
